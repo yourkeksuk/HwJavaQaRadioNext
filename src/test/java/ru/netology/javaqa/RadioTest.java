@@ -1,14 +1,14 @@
 package ru.netology.javaqa;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 
 
 public class RadioTest {
 
     @Test
-    public void setMoreNumberStation(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
+    public void setMoreNumberStation() {
+        Radio radio = new Radio();
         radio.setNumberStation(10);
 
         int expected = 0;
@@ -17,8 +17,8 @@ public class RadioTest {
     }
 
     @Test
-    public void setLessNumberStation(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
+    public void setLessNumberStation() {
+        Radio radio = new Radio();
         radio.setNumberStation(-1);
 
         int expected = 0;
@@ -27,20 +27,20 @@ public class RadioTest {
     }
 
     @Test
-    public void nextTestNine(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setNumberStation(9);
+    public void nextTestNine() {
+        Radio radio = new Radio();
+        radio.setNumberStation(radio.getMaxNumberStation());
         radio.next();
 
-        int expected = 0;
+        int expected = radio.getMinNumberStation();
         int actual = radio.getNumberStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void nextTestZero(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setNumberStation(0);
+    public void nextTestZero() {
+        Radio radio = new Radio();
+        radio.setNumberStation(radio.getMinNumberStation());
         radio.next();
 
         int expected = 1;
@@ -50,19 +50,19 @@ public class RadioTest {
 
     @Test
     public void prevTestZero() {
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setNumberStation(0);
+        Radio radio = new Radio();
+        radio.setNumberStation(radio.getMinNumberStation());
         radio.prev();
 
-        int expected = 9;
+        int expected = radio.getMaxNumberStation();
         int actual = radio.getNumberStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void prevTestNine() {
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setNumberStation(9);
+        Radio radio = new Radio();
+        radio.setNumberStation(radio.getMaxNumberStation());
         radio.prev();
 
         int expected = 8;
@@ -71,40 +71,40 @@ public class RadioTest {
     }
 
     @Test
-    public void setVolumeMore(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setVolume(11);
+    public void setVolumeMore() {
+        Radio radio = new Radio();
+        radio.setVolume(111);
 
-        int expected = 10;
+        int expected = radio.getMaxVolume();
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void setVolumeLess(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
+    public void setVolumeLess() {
+        Radio radio = new Radio();
         radio.setVolume(-1);
 
-        int expected = 0;
+        int expected = radio.getMinVolume();
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void plusVolumeMax(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setVolume(10);
+    public void plusVolumeMax() {
+        Radio radio = new Radio();
+        radio.setVolume(101);
         radio.plusVolume();
 
-        int expected = 10;
+        int expected = radio.getMaxVolume();
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void plusVolumeMin(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setVolume(0);
+    public void plusVolumeMin() {
+        Radio radio = new Radio();
+        radio.setVolume(radio.getMinVolume());
         radio.plusVolume();
 
         int expected = 1;
@@ -113,23 +113,23 @@ public class RadioTest {
     }
 
     @Test
-    public void minusVolumeMax(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setVolume(10);
+    public void minusVolumeMax() {
+        Radio radio = new Radio();
+        radio.setVolume(radio.getMaxVolume());
         radio.minusVolume();
 
-        int expected = 9;
+        int expected = 99;
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void minusVolumeMin(){
-        ru.netology.javaqa.Radio radio = new ru.netology.javaqa.Radio();
-        radio.setVolume(0);
+    public void minusVolumeMin() {
+        Radio radio = new Radio();
+        radio.setVolume(-1);
         radio.minusVolume();
 
-        int expected = 0;
+        int expected = radio.getMinVolume();
         int actual = radio.getVolume();
         Assertions.assertEquals(expected, actual);
     }
